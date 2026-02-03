@@ -16,3 +16,15 @@ export function deleteTask(id){
     const updatedTasks= tasks.filter( task=> task.id!==id );
     localStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks));
 }
+
+export function getTotalTasks(){
+    return getTasks().length;
+}
+
+export function getCompletedTasks(){
+    return getTasks().filter(task => task.status === "done").length;
+}
+
+export function getPendingTasks(){
+    return getTasks.length - getCompletedTasks();
+}

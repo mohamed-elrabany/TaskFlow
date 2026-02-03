@@ -10,8 +10,8 @@ export default function AddTask() {
     title: "",
     description: "",
     dueDate: '',
-    priority: "Medium",
-    status: "To Do",
+    priority: "",
+    status: "",
   });
 
   function handleChange(e) {

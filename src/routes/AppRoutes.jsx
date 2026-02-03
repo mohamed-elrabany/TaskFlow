@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Welcome from "../pages/Welcome";
 import Dashboard from "../pages/Dashboard";
 import Settings from "../pages/Settings";
-import Tasks from "../pages/Tasks";
+import Tasks from "../pages/TasksPage";
 import AddTask from "../pages/AddTask";
 import RootLayout from "../layout/RootLayout";
 
