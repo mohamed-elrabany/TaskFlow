@@ -1,6 +1,6 @@
 
 
-export default function Input({ label, id, value, onChange, type='text', placeholder, ...props }) {
+export default function Input({ label, id, ...props }) {
   return (
     <div className="flex flex-col gap-2">
         
@@ -12,9 +12,6 @@ export default function Input({ label, id, value, onChange, type='text', placeho
 
       <input
         id={id}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
         className="
               px-2 py-2 rounded-lg border border-gray-300
               focus:outline-none

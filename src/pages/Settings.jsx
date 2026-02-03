@@ -1,7 +1,10 @@
-
+import TopBar from "../components/Topbar"
 
 export default function Settings(){
-    return<>
-        <h1>Settings Page</h1>
-    </>
+    return(
+        <div>
+              <TopBar title="Settings" />
+              
+        </div>
+    )
 }

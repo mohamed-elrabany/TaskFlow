@@ -1,7 +1,9 @@
+import TopBar from "../components/Topbar";
 
-
-export default function Tasks(){
-    return<>
-        <h1>Tasks</h1>
-    </>
+export default function Tasks() {
+  return (
+    <div>
+      <TopBar title="Tasks" />
+    </div>
+  );
 }
