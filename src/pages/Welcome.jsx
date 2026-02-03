@@ -2,6 +2,7 @@ import { useState } from "react";
 import { avatars } from "../util/data";
 import { saveUser } from "../util/storage/user";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/UI/Input";
 
 export default function Welcome() {
 
@@ -32,24 +33,13 @@ export default function Welcome() {
           </div>
 
           <div className="flex flex-col gap-5">
-            <div className="flex flex-col gap-2">
-              <label className="text-gray-900 font-semibold" htmlFor="name">
-                What's your name?
-              </label>
-              <input
+            
+            <Input 
+              label="What's your name?"
               value={userName}
-                className="
-              px-2 py-2 rounded-lg border border-gray-300
-              focus:outline-none
-              focus:border-purple-400
-              focus:ring-1 focus:ring-purple-600
-              transition
-              "
-                type="text"
-                placeholder="Enter your name"
-                onChange={ e => setUserName(e.target.value) }
-              />
-            </div>
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Enter your name" />
+
 
             <div className="flex flex-col gap-2">
               <label className="text-gray-900 font-semibold">
