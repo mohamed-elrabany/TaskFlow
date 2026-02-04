@@ -4,6 +4,7 @@ import { MdOutlineAdd } from "react-icons/md";
 import { deleteTask, getTasks } from "../util/storage/tasks";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import NoTasks from "../components/UI/NoTasks";
 
 
 export default function Tasks() {
@@ -35,7 +36,7 @@ export default function Tasks() {
                 id="status"
               >
                 <option value="All Tasks">All Tasks</option>
-                <option value="to-do">To Do</option>
+                <option value="todo">To Do</option>
                 <option value="in-progress">In Progress</option>
                 <option value="done">Done</option>
               </select>

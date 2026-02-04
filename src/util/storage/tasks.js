@@ -11,6 +11,23 @@ export function getTasks(){
     return data ? JSON.parse(data) : []; 
 }
 
+export function getTaskById(id){
+    const tasks= getTasks();
+    return tasks.find( task => task.id === id ) || null;
+}
+
+export function editTask(id, updatedData){
+    const tasks=getTasks();
+    const updatedTasks= tasks.map(task =>
+        task.id === id
+        ? {...task, ...updatedData}
+        : task
+    );
+
+    localStorage.setItem(TASKS_KEY, JSON.stringify(updatedTasks)); 
+    return updatedTasks;
+}
+
 export function deleteTask(id){
     const tasks= getTasks();
     const updatedTasks= tasks.filter( task=> task.id!==id );
@@ -26,5 +43,5 @@ export function getCompletedTasks(){
 }
 
 export function getPendingTasks(){
-    return getTasks.length - getCompletedTasks();
+    return getTasks().length - getCompletedTasks();
 }

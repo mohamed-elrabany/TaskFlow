@@ -1,49 +1,55 @@
+import { useParams } from "react-router-dom";
+import { getTaskById, editTask } from "../util/storage/tasks";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../components/UI/Input";
 import TopBar from "../components/Topbar";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { addTask } from "../util/storage/tasks";
 
-export default function AddTask() {
+export default function EditTask() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
+  const { taskId } = useParams();
+
+  const [taskData, setTaskData] = useState({
+    title: '',
+    description: '',
     dueDate: '',
-    priority: "low",
-    status: "todo",
+    priority: 'low',
+    status: 'todo',
   });
+
+  useEffect(() => {
+    const task = getTaskById(taskId);
+    if (!task) {
+      navigate("/tasks");
+      return;
+    }
+    setTaskData(task);
+  }, [taskId, navigate]);
+
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setFormData((prev) => ({
+    setTaskData((prev) => ({
       ...prev,
       [name]: value,
     }));
   }
 
-  function handleCreateTask() {
-    if (!formData.title.trim()) return;
-    const task = {
-      id: crypto.randomUUID(),
-      ...formData,
-      createdAt: Date.now(),
-    };
-
-    addTask(task);
+  function handleUpdates() {
+    editTask(taskId, taskData);
     navigate("/tasks");
   }
 
   return (
     <div className="min-h-screen">
-      <TopBar title="Add New Task" />
+      <TopBar title="Edit Task" />
       <main className="flex items-center justify-center min-h-screen bg-gray-200">
         <div className="flex flex-col min-w-xl mx-auto px-8 py-6 gap-6 rounded-2xl shadow-xl bg-white border-2 border-gray-300">
           <Input
             label="Task Title"
             id="title"
             name="title"
-            value={formData.title}
+            value={taskData.title}
             onChange={handleChange}
             placeholder="Enter task title"
           />
@@ -59,13 +65,13 @@ export default function AddTask() {
               id="description"
               name="description"
               placeholder="Enter task description"
-              value={formData.description}
+              value={taskData.description}
               onChange={handleChange}
               className="px-2 py-2 rounded-lg border border-gray-300
-              focus:outline-none
-              focus:border-purple-400
-              focus:ring-1 focus:ring-purple-600
-              transitionmt-2 min-h-[120px]"
+                  focus:outline-none
+                  focus:border-purple-400
+                  focus:ring-1 focus:ring-purple-600
+                  transitionmt-2 min-h-[120px]"
             />
           </div>
 
@@ -74,7 +80,7 @@ export default function AddTask() {
             id="dueDate"
             name="dueDate"
             type="date"
-            value={formData.dueDate}
+            value={taskData.dueDate}
             onChange={handleChange}
           />
 
@@ -84,7 +90,7 @@ export default function AddTask() {
               <select
                 className="text-sm border border-gray-300 rounded-lg px-3 py-1 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 name="priority"
-                value={formData.priority}
+                value={taskData.priority}
                 onChange={handleChange}
                 id="priority"
               >
@@ -99,7 +105,7 @@ export default function AddTask() {
               <select
                 className="text-sm border border-gray-300 rounded-lg px-3 py-1 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 name="status"
-                value={formData.status}
+                value={taskData.status}
                 onChange={handleChange}
                 id="status"
               >
@@ -112,21 +118,21 @@ export default function AddTask() {
 
           <div className="grid grid-cols-2 gap-2 justify-between items-center">
             <button
-            onClick={handleCreateTask}
+              onClick={handleUpdates}
               className="
-            text-center px-4 py-2 rounded-lg font-semibold transition
-            bg-purple-600 hover:bg-purple-700 cursor-pointer text-white
-            "
+                text-center px-4 py-2 rounded-lg font-semibold transition
+                bg-purple-600 hover:bg-purple-700 cursor-pointer text-white
+                "
             >
-              Create Task
+              Update Task
             </button>
 
             <button
-              onClick={()=> navigate("/tasks")}
+              onClick={() => navigate("/tasks")}
               className="
-            text-center px-4 py-2 rounded-lg font-semibold transition border-2 border-gray-300
-            bg-white hover:bg-gray-200 cursor-pointer text-gray-600
-            "
+                text-center px-4 py-2 rounded-lg font-semibold transition border-2 border-gray-300
+                bg-white hover:bg-gray-200 cursor-pointer text-gray-600
+                "
             >
               Cancel
             </button>
