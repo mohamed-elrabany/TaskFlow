@@ -2,23 +2,20 @@ import TopBar from "../components/Topbar";
 import TaskCard from "../components/UI/TaskCard";
 import { MdOutlineAdd } from "react-icons/md";
 import { deleteTask, getTasks } from "../util/storage/tasks";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import NoTasks from "../components/UI/NoTasks";
+import { TaskContext } from "../context/TaskContext";
 
 
 export default function Tasks() {
-  const navigate= useNavigate();
-  const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-  const storedTasks = getTasks();
-  setTasks(storedTasks);
-  }, []);
+  const {tasks, deleteTask}= useContext(TaskContext);
+  const navigate= useNavigate();
+
 
   function handleDelete(id){
     deleteTask(id);
-    setTasks(getTasks());
   }
 
 

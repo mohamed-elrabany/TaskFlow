@@ -3,7 +3,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { editTask } from "../../util/storage/tasks";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TaskContext } from "../../context/TaskContext";
 
 export default function TaskCard({
   id,
@@ -14,11 +15,9 @@ export default function TaskCard({
   dueDate,
   onDelete,
 }) {
-
-  const [currentStatus, setCurrentStatus]= useState(status);
+  const { editTask }= useContext(TaskContext);
 
   function handleChange(newStatus) {
-    setCurrentStatus(newStatus);
     editTask(id,{
       id,
     title,
@@ -101,7 +100,7 @@ export default function TaskCard({
           className="text-sm border border-gray-300 rounded-lg px-3 py-1 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
           name="status"
           id="status"
-          value={currentStatus}
+          value={status}
           onChange={(e)=> handleChange(e.target.value)}
         >
           <option value="todo">To Do</option>

@@ -1,11 +1,14 @@
 import Input from "../components/UI/Input";
 import TopBar from "../components/Topbar";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { addTask } from "../util/storage/tasks";
+import { useState, useContext } from "react";
+import { TaskContext } from "../context/TaskContext";
 
 export default function AddTask() {
+  const {addTask}= useContext(TaskContext);
+
   const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     title: "",
     description: "",

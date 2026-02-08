@@ -1,21 +1,19 @@
 import { MdOutlineAdd } from "react-icons/md";
 import { getTasks, deleteTask } from "../util/storage/tasks";
 import NoTasks from "./UI/NoTasks";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import TaskCard from "./UI/TaskCard";
 import { useNavigate } from "react-router-dom";
+import { TaskContext } from "../context/TaskContext";
 
 export default function Tasks() {
+  const {tasks, deleteTask}= useContext(TaskContext);
+  
   const navigate= useNavigate();
-  const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    setTasks(getTasks());
-  }, []);
 
     function handleDelete(id){
       deleteTask(id);
-      setTasks(getTasks());
     }
   
 

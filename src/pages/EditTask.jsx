@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
-import { getTaskById, editTask } from "../util/storage/tasks";
-import { useEffect, useState } from "react";
+import { getTaskById } from "../util/storage/tasks";
+import { useEffect, useState, useContext } from "react";
+import { TaskContext } from "../context/TaskContext";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/UI/Input";
 import TopBar from "../components/Topbar";
 
 export default function EditTask() {
+  const {editTask}= useContext(TaskContext);
   const navigate = useNavigate();
   const { taskId } = useParams();
 
