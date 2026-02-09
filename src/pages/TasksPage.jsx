@@ -1,4 +1,4 @@
-import TopBar from "../components/Topbar";
+import TopBar from "../components/TopBar";
 import TaskCard from "../components/UI/TaskCard";
 import { MdOutlineAdd } from "react-icons/md";
 import { deleteTask, getTasks } from "../util/storage/tasks";

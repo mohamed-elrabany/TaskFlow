@@ -9,6 +9,10 @@ export function getUser(){
     return data ? JSON.parse(data) : null;
 }
 
+export function editUser(user){
+
+}
+
 export function clearUser(){
     localStorage.removeItem('user');
     return true;

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { avatars } from "../util/data";
 import { saveUser } from "../util/storage/user";
-import { useNavigate } from "react-router-dom";
+import { replace, useNavigate } from "react-router-dom";
 import Input from "../components/UI/Input";
+import { UserContext } from "../context/UserContext";
 
 export default function Welcome() {
+  const {editUser}= useContext(UserContext);
 
     const [userName, setUserName]= useState('');
     const [userAvatar, setUserAvatar]= useState(null);
@@ -14,8 +16,8 @@ export default function Welcome() {
     function handleStart(){
         if(!userName || !userAvatar) return;
 
-        saveUser({userName, userAvatar});
-        navigate('/dashboard');
+        editUser({userName, userAvatar});
+        navigate('/dashboard', {replace: true});
     }
 
   return (
@@ -51,7 +53,7 @@ export default function Welcome() {
                   onClick={ ()=> setUserAvatar(avatar.src)}
                     key={avatar.id}
                     className={`
-                    inline-flex border-2 items-center justify-center rounded-full 
+                    inline-flex border-2 items-center justify-center rounded-lg 
                     text-center cursor-pointer transition-all p-3
                     ${userAvatar===avatar.src 
                     ? "border-purple-600 bg-purple-200" 

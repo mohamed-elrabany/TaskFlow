@@ -24,6 +24,11 @@ export function TaskProvider({ children }){
         taskStorage.deleteTask(id);
         loadTasks();
     }
+    
+    function clearTasks(){
+        setTasks([]);
+        localStorage.removeItem("tasks");
+    }
 
     useEffect(()=>{
         loadTasks();
@@ -31,7 +36,7 @@ export function TaskProvider({ children }){
 
     return(
         <TaskContext.Provider 
-            value={{tasks, setTasks, addTask, editTask, deleteTask}}>
+            value={{tasks, setTasks, addTask, editTask, deleteTask, clearTasks}}>
             {children}
         </TaskContext.Provider>
     );

@@ -1,4 +1,4 @@
-import TopBar from "../components/Topbar"
+import TopBar from "../components/TopBar"
 import TaskStatus from "../components/TaskStatus"
 import Tasks from "../components/Tasks"
 
