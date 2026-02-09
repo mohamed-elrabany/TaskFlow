@@ -18,9 +18,9 @@ export default function Tasks() {
   
 
   return (
-    <div className="bg-white border-2 border-gray-300 flex flex-col gap-5 rounded-lg p-8">
+    <div className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 flex flex-col gap-5 rounded-lg p-8">
       <div className="flex justify-between items-center">
-        <h2 className="font-semibold text-xl">Recent Tasks</h2>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Recent Tasks</h2>
         <button
         onClick={()=> navigate('/add-task')}
         className="bg-purple-600 hover:bg-purple-700 cursor-pointer text-sm text-white flex justify- gap-2 items-center text-center px-4 py-2 rounded-lg font-bold transition">

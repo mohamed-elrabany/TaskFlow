@@ -7,16 +7,16 @@ import Input from "../components/UI/Input";
 import TopBar from "../components/TopBar";
 
 export default function EditTask() {
-  const {editTask}= useContext(TaskContext);
+  const { editTask } = useContext(TaskContext);
   const navigate = useNavigate();
   const { taskId } = useParams();
 
   const [taskData, setTaskData] = useState({
-    title: '',
-    description: '',
-    dueDate: '',
-    priority: 'low',
-    status: 'todo',
+    title: "",
+    description: "",
+    dueDate: "",
+    priority: "low",
+    status: "todo",
   });
 
   useEffect(() => {
@@ -27,7 +27,6 @@ export default function EditTask() {
     }
     setTaskData(task);
   }, [taskId, navigate]);
-
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -43,10 +42,11 @@ export default function EditTask() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-200 dark:bg-gray-950 flex flex-col">
       <TopBar title="Edit Task" />
-      <main className="flex items-center justify-center min-h-screen bg-gray-200">
-        <div className="flex flex-col min-w-xl mx-auto px-8 py-6 gap-6 rounded-2xl shadow-xl bg-white border-2 border-gray-300">
+
+      <main className="flex flex-1 items-center justify-center">
+        <div className="flex flex-col min-w-xl mx-auto px-8 py-6 gap-6 rounded-2xl shadow-xl bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700">
           <Input
             label="Task Title"
             id="title"
@@ -59,7 +59,7 @@ export default function EditTask() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="description"
-              className="text-gray-900 font-semibold"
+              className="text-gray-700 dark:text-gray-300 font-medium"
             >
               Description
             </label>
@@ -69,11 +69,12 @@ export default function EditTask() {
               placeholder="Enter task description"
               value={taskData.description}
               onChange={handleChange}
-              className="px-2 py-2 rounded-lg border border-gray-300
-                  focus:outline-none
-                  focus:border-purple-400
-                  focus:ring-1 focus:ring-purple-600
-                  transitionmt-2 min-h-[120px]"
+              className="px-2 py-2 rounded-lg border border-gray-300 dark:border-gray-600
+                text-gray-700 dark:text-gray-300 mb-3 block
+                focus:outline-none
+                focus:border-purple-400
+                focus:ring-1 focus:ring-purple-600
+                transition min-h-[120px]"
             />
           </div>
 
@@ -88,9 +89,13 @@ export default function EditTask() {
 
           <div className="grid grid-cols-2 gap-4 justify-between items-center">
             <div className="flex flex-col gap-2">
-              <label className="text-gray-900 font-semibold">Priority</label>
+              <label className="text-gray-700 dark:text-gray-300 font-medium">
+                Priority
+              </label>
               <select
-                className="text-sm border border-gray-300 rounded-lg px-3 py-1 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1
+                  bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300
+                  focus:outline-none focus:ring-2 focus:ring-purple-500"
                 name="priority"
                 value={taskData.priority}
                 onChange={handleChange}
@@ -103,9 +108,13 @@ export default function EditTask() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-gray-900 font-semibold">Status</label>
+              <label className="text-gray-700 dark:text-gray-300 font-medium">
+                Status
+              </label>
               <select
-                className="text-sm border border-gray-300 rounded-lg px-3 py-1 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1
+                  bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300
+                  focus:outline-none focus:ring-2 focus:ring-purple-500"
                 name="status"
                 value={taskData.status}
                 onChange={handleChange}
@@ -124,7 +133,7 @@ export default function EditTask() {
               className="
                 text-center px-4 py-2 rounded-lg font-semibold transition
                 bg-purple-600 hover:bg-purple-700 cursor-pointer text-white
-                "
+              "
             >
               Update Task
             </button>
@@ -132,9 +141,10 @@ export default function EditTask() {
             <button
               onClick={() => navigate("/tasks")}
               className="
-                text-center px-4 py-2 rounded-lg font-semibold transition border-2 border-gray-300
-                bg-white hover:bg-gray-200 cursor-pointer text-gray-600
-                "
+                text-center px-4 py-2 rounded-lg font-semibold transition border-2 border-transparent
+                bg-white dark:bg-gray-900/50 hover:bg-gray-200 dark:hover:bg-gray-900
+                cursor-pointer text-gray-600 dark:text-gray-300
+              "
             >
               Cancel
             </button>

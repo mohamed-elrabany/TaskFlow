@@ -8,7 +8,7 @@ export default function Dashboard(){
     return<>
         <div>
             <TopBar title='Dashboard' />
-            <main className="flex flex-col gap-8 p-8 bg-gray-200">
+            <main className="flex flex-col gap-8 p-8 min-h-screen bg-gray-200 dark:bg-gray-950">
                 <TaskStatus />  
                 <Tasks />
             </main>

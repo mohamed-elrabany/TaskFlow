@@ -20,15 +20,15 @@ export default function Tasks() {
 
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-200 dark:bg-gray-950">
       <TopBar title="Tasks" />
-      <main className="flex flex-col gap-8 p-8 bg-gray-200">
-        <div className="bg-white border-2 border-gray-300 flex flex-col gap-5 rounded-lg p-8">
+      <main className="flex flex-col gap-8 p-8">
+        <div className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 flex flex-col gap-5 rounded-lg p-8">
           <div className="flex justify-between items-center">
             <div className="flex justify-center items-center gap-2">
-              <h2 className="font-semibold text-xl">Tasks ({tasks.length})</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Tasks ({tasks.length})</h2>
               <select
-                className="text-sm border border-gray-300 rounded-lg px-3 py-1 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 name="status"
                 id="status"
               >

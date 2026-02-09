@@ -9,10 +9,10 @@ export default function Sidebar() {
     "flex gap-4 items-center justify-start w-full px-3 py-3 rounded-lg transition font-semibold";
 
   return (
-    <aside className="w-1/3 min-h-screen shadow-[4px_0_10px_rgba(0,0,0,0.15)] px-6 py-8 gap-6 flex flex-col justify-start items-start">
+    <aside className="w-1/3 min-h-screen shadow-[4px_0_10px_rgba(0,0,0,0.15)] px-6 py-8 gap-6 flex flex-col justify-start items-start bg-white dark:bg-gray-900">
       <div className="flex flex-col ">
         <h1 className="font-bold text-4xl text-left text-purple-600">TaskFlow</h1>
-        <p className="text-gray-700 text-left text-sm">Manage your tasks</p>
+        <p className="text-gray-700 dark:text-gray-400 text-left text-sm">Manage your tasks</p>
       </div>
       
 
@@ -21,8 +21,8 @@ export default function Sidebar() {
           className={({ isActive }) =>
             `${baseLinkClasses} ${
               isActive
-                ? "bg-purple-200 text-purple-700"
-                : "text-gray-600 hover:bg-purple-200"
+                ? "bg-purple-200 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
+                : "text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-800"
             }`
           }
         >
@@ -34,8 +34,8 @@ export default function Sidebar() {
           className={({ isActive }) =>
             `${baseLinkClasses} ${
               isActive
-                ? "bg-purple-200 text-purple-700"
-                : "text-gray-600 hover:bg-purple-200"
+                ? "bg-purple-200 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
+                : "text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-800"
             }`
           }
         >
@@ -47,8 +47,8 @@ export default function Sidebar() {
           className={({ isActive }) =>
             `${baseLinkClasses} ${
               isActive
-                ? "bg-purple-200 text-purple-700"
-                : "text-gray-600 hover:bg-purple-200"
+                ? "bg-purple-200 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
+                : "text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-800"
             }`
           }
         >
@@ -61,8 +61,8 @@ export default function Sidebar() {
           className={({ isActive }) =>
             `${baseLinkClasses} ${
               isActive
-                ? "bg-purple-200 text-purple-700"
-                : "text-gray-600 hover:bg-purple-200"
+                ? "bg-purple-200 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
+                : "text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-800"
             }`
           }
         >

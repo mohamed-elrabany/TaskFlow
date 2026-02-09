@@ -47,13 +47,13 @@ export default function Settings() {
 
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <TopBar title="Settings" />
-      <main className="flex flex-col gap-8 p-8 bg-gray-200">
+      <main className="flex flex-col gap-8 p-8 bg-gray-200 dark:bg-gray-950">
         {/* User Data Part */}
 
-        <div className="bg-white border-2 border-gray-300 flex flex-col gap-5 rounded-lg p-8 shadow-lg">
-          <h2 className="font-semibold text-xl">Recent Tasks</h2>
+        <div className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 flex flex-col gap-5 rounded-lg p-8 shadow-lg">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">User Settings</h2>
 
           <div className="flex flex-col gap-5">
             <Input
@@ -69,7 +69,7 @@ export default function Settings() {
             />
 
             <div className="flex flex-col gap-2">
-              <label className="text-gray-900 font-semibold">Avatar</label>
+              <label className="text-gray-700 dark:text-gray-300 mb-3 block">Avatar</label>
               <div className="grid grid-cols-5 gap-3 items-center p-4">
                 {avatars.map((avatar) => (
                   <button
@@ -85,8 +85,8 @@ export default function Settings() {
                             text-center cursor-pointer transition-all p-3
                             ${
                               userData.userAvatar === avatar.src
-                                ? "border-purple-600 bg-purple-200"
-                                : "border-gray-400 hover:border-purple-500"
+                                ? "border-purple-600 bg-purple-200 dark:bg-purple-900/30 scale-110"
+                                : "hover:border-purple-400 dark:hover:border-purple-500 border-gray-300 dark:border-gray-600"
                             }`}
                   >
                     <img
@@ -110,27 +110,27 @@ export default function Settings() {
     ${
       user?.userName === userData.userName &&
       user?.userAvatar === userData.userAvatar
-        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-        : "bg-purple-600 hover:bg-purple-700 text-white"
+        ? "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed"
+        : "bg-purple-600 hover:bg-purple-700 text-white cursor-pointer"
     }
   `}
           >
             Save Changes
           </button>
         </div>
-        <div className="bg-white border-2 border-gray-300 flex flex-col gap-5 rounded-lg p-8 shadow-lg">
-          <h2 className="font-semibold text-xl">Appearance</h2>
+        <div className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 flex flex-col gap-5 rounded-lg p-8 shadow-lg">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Appearance</h2>
 
           <div className="flex justify-between items-center gap-5">
             <div className="flex gap-2 justify-center items-center">
               {theme === "dark" ? (
-                <MdOutlineDarkMode size={24} />
+                <MdOutlineDarkMode className="text-gray-900 dark:text-white" size={24} />
               ) : (
-                <MdOutlineLightMode size={24} />
+                <MdOutlineLightMode className="text-gray-900 dark:text-white" size={24} />
               )}
               <div>
-                <h4 className="font-medium">Dark Mode</h4>
-                <p className="text-gray-400 text-center text-sm">
+                <h4 className="font-medium text-gray-900 dark:text-white">Dark Mode</h4>
+                <p className="text-gray-500 dark:text-gray-400 text-center text-sm">
                   Toggle dark mode theme
                 </p>
               </div>
@@ -155,13 +155,13 @@ export default function Settings() {
             </label>
           </div>
         </div>
-        <div className="bg-white border-2 border-gray-300 flex flex-col gap-5 rounded-lg p-8 shadow-lg">
-          <h2 className="font-semibold text-xl text-red-600">Danger Zone</h2>
+        <div className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 flex flex-col gap-5 rounded-lg p-8 shadow-lg">
+          <h2 className="text-xl font-semibold text-red-600 dark:text-red-400 mb-6">Danger Zone</h2>
 
           <div className="flex justify-between items-center gap-5">
             <div>
-              <h4 className="font-medium">Clear All Data</h4>
-              <p className="text-gray-400 text-center text-sm">
+              <h4 className="font-medium text-gray-900 dark:text-white">Clear All Data</h4>
+              <p className="text-gray-500 dark:text-gray-400 text-center text-sm">
                 This will delete all your tasks and user data permanently
               </p>
             </div>

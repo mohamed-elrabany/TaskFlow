@@ -30,14 +30,14 @@ export default function TaskCard({
 
   const navigate = useNavigate();
   const priorityColorMap = {
-    high: "bg-red-100 text-red-700",
-    medium: "bg-yellow-100 text-yellow-700",
-    low: "bg-green-100 text-green-700",
+    high: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
+    medium: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
+    low: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
   };
   const statusColorMap = {
-    todo: "bg-gray-300 text-gray-700",
-    "in-progress": "bg-blue-100 text-blue-700",
-    done: "bg-green-100 text-green-700",
+    todo: "bg-gray-200 text-gray-700 dark:bg-gray-900/50 dark:text-gray-300",
+    "in-progress": "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+    done: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
   };
 
   const priorityColor =
@@ -45,32 +45,32 @@ export default function TaskCard({
   const statusColor = statusColorMap[status] ?? "bg-gray-100 text-gray-700";
 
   return (
-    <div className="bg-white border-2 border-gray-300 flex flex-col gap-4 rounded-lg p-8">
+    <div className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 flex flex-col gap-4 rounded-lg p-8">
       <div className="flex justify-between items-center">
-        <h3 className="text-gray-700 text-center text-xl font-semibold">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
           {title}
         </h3>
         <div className="flex gap-2 justify-center items-center">
           <button
             onClick={() => navigate(`/edit-task/${id}`)}
-            className="cursor-pointer p-2 text-center rounded-md hover:bg-gray-300"
+            className="cursor-pointer p-2 text-center rounded-md hover:bg-gray-300 dark:hover:bg-gray-900/30"
           >
-            <FiEdit className="text-gray-700" />
+            <FiEdit className="text-gray-700 dark:text-gray-300" />
           </button>
           <button
             onClick={onDelete}
-            className="cursor-pointer p-2 text-center rounded-md hover:bg-red-100"
+            className="cursor-pointer p-2 text-center rounded-md hover:bg-red-100 dark:hover:bg-red-900/30"
           >
             <RiDeleteBin6Line className="text-red-600" />
           </button>
         </div>
       </div>
 
-      <p className="text-gray-500 text-left text-sm font-medium">
+      <p className="text-gray-600 dark:text-gray-400 text-sm">
         {description}
       </p>
 
-      <div className="flex gap-2 justify-start items-center text-gray-500">
+      <div className="flex gap-2 justify-start items-center text-sm text-gray-500 dark:text-gray-400">
         <IoCalendarClearOutline />
         <span>
           {dueDate
@@ -97,7 +97,7 @@ export default function TaskCard({
           </p>
         </div>
         <select
-          className="text-sm border border-gray-300 rounded-lg px-3 py-1 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
           name="status"
           id="status"
           value={status}
