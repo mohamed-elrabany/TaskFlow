@@ -1,7 +1,6 @@
 import TopBar from "../components/TopBar";
 import TaskCard from "../components/UI/TaskCard";
 import { MdOutlineAdd } from "react-icons/md";
-import { deleteTask, getTasks } from "../util/storage/tasks";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import NoTasks from "../components/UI/NoTasks";
@@ -10,13 +9,23 @@ import { TaskContext } from "../context/TaskContext";
 
 export default function Tasks() {
 
-  const {tasks, deleteTask}= useContext(TaskContext);
+  const {tasks, deleteTask, filterTasks}= useContext(TaskContext);
   const navigate= useNavigate();
+  const [filtered, setFiltered]= useState([]);
+
+  useEffect(()=>{
+    setFiltered(tasks)
+  },[tasks]);
 
 
   function handleDelete(id){
     deleteTask(id);
   }
+
+  function handleFilter(status){
+    setFiltered(filterTasks(status))
+  }
+
 
 
   return (
@@ -28,6 +37,7 @@ export default function Tasks() {
             <div className="flex justify-center items-center gap-2">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Tasks ({tasks.length})</h2>
               <select
+                onChange={(e)=> handleFilter(e.target.value)}
                 className="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 name="status"
                 id="status"
@@ -44,11 +54,11 @@ export default function Tasks() {
               <p>Add Task</p>
             </button>
           </div>
-          <div className={`grid justify-center items-center gap-4 ${tasks.length > 0 ? "grid-cols-2" : "grid-cols-1"}`}>
-              {tasks.length === 0 ? (
+          <div className={`grid justify-center items-center gap-4 ${filtered.length > 0 ? "grid-cols-2" : "grid-cols-1"}`}>
+              {filtered.length === 0 ? (
               <NoTasks />
             ) : (
-              tasks.map((task) => (
+              filtered.map((task) => (
                 <TaskCard
                   key={task.id}
                   {...task}

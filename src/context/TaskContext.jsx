@@ -30,13 +30,18 @@ export function TaskProvider({ children }){
         localStorage.removeItem("tasks");
     }
 
+    function filterTasks(status){
+        if (status === "All Tasks") return tasks;
+        return tasks.filter(task => task.status === status);
+    }
+
     useEffect(()=>{
         loadTasks();
     },[]);
 
     return(
         <TaskContext.Provider 
-            value={{tasks, setTasks, addTask, editTask, deleteTask, clearTasks}}>
+            value={{tasks, setTasks, addTask, editTask, deleteTask, clearTasks, filterTasks}}>
             {children}
         </TaskContext.Provider>
     );
